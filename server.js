@@ -65,5 +65,16 @@ app.get("/menu", (req,res) => {
   })
 })
 
+app.get("/menu/:category", (req,res) => {
+  const mains = req.query.mains
+  const desserts = req.query.desserts
+  const sides = req.query.sides
+  
+  res.render("category.ejs", {
+    RESTAURANT
+  })
+})
+
+
 app.listen(3000);
 
