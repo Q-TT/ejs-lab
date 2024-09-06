@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu</title>
+</head>
+<body>
+    <%- include('./partials/nav') %>
+    <h1>Full Menu</h1>
+    <% (RESTAURANT.menu).forEach((dish) => { %>
+        <p> Name: <%= dish.name %> </p>
+        <p> Price: <%= dish.price %> </p>
+        <p> Rating: <%= dish.rating %> </p>
+        <p> Details: <%= dish.details %> </p>
+        <br> 
+    <% }) %>
+    
+    <hr>
+    <h1>Level up below</h1>
+    <% const main = [] %>
+    <% const dessert = [] %>
+    <% const side = [] %>
+
+    <% (RESTAURANT.menu).forEach((dish) => { %>
+        <% if(dish.category === "mains") { %>
+            <% main.push(dish.name) %>
+        <% } %>
+    <% }) %>
+
+    <% (RESTAURANT.menu).forEach((dish) => { %>
+        <% if(dish.category === "desserts") { %>
+            <% dessert.push(dish.name) %>
+        <% } %>
+    <% }) %>
+
+    <% (RESTAURANT.menu).forEach((dish) => { %>
+        <% if(dish.category === "sides") { %>
+            <% side.push(dish.name) %>
+        <% } %>
+    <% }) %>
+
+    <h2> Mains: <%= main.join( " & ") %> </h2>
+    <h2> Desserts: <%= dessert.join( " & ") %> </h2>
+    <h2> Sides: <%= side.join( " & ") %> </h2>
+
+
+
+</body>
+</html>
