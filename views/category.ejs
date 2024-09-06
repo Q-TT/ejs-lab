@@ -3,9 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Category</title>
+    <title><%= menuItems[0].category %></title>
 </head>
 <body>
     <%- include('./partials/nav') %>
+    <h2> Memu Items</h2>
+    <% menuItems.forEach((item) => { %>
+        <h2><%= menuItems.indexOf(item) + 1 %>: <%= item.name %></h2>
+        <h3>Price: <%= item.price %></h3>
+        <h3>Rating: <%= item.rating %></h3>
+        <h3>Details: <%= item.details %></h3>
+        <br>
+    <% }) %>
 </body>
 </html>

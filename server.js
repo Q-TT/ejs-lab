@@ -66,12 +66,22 @@ app.get("/menu", (req,res) => {
 })
 
 app.get("/menu/:category", (req,res) => {
-  const mains = req.query.mains
-  const desserts = req.query.desserts
-  const sides = req.query.sides
-  
+//* create the array of 3 categries before sending to ejs.
+
+  let menuItems 
+  if (req.params.category === "mains") {
+    menuItems = RESTAURANT.menu.filter(menuItem => menuItem.category === "mains")
+  }
+  if(req.params.category === "desserts") {
+    menuItems = RESTAURANT.menu.filter(menuItem => menuItem.category === "desserts")
+  }
+  if(req.params.category === "sides") {
+    menuItems = RESTAURANT.menu.filter(menuItem => menuItem.category === "sides")
+  }
+
   res.render("category.ejs", {
-    RESTAURANT
+    RESTAURANT,
+    menuItems,
   })
 })
 
